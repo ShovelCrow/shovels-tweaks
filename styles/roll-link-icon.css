@@ -1,0 +1,88 @@
+a.roll-link-group {
+    --damage-icon-acid:      "\f0c3"; /* flask */
+    --damage-icon-cold:      "\f2dc"; /* snowflake */
+    --damage-icon-fire:      "\f06d"; /* fire */
+    --damage-icon-force:     "\f890"; /* sparkles */
+    --damage-icon-lightning: "\e0b7"; /* bolt-lightning */
+    --damage-icon-necrotic:  "\f54c"; /* skull */
+    --damage-icon-poison:    "\f717"; /* spider */
+    --damage-icon-psychic:   "\f665"; /* hamsa (eye-evil \f6db) */
+    --damage-icon-radiant:   "\f185"; /* sun (star-christmas \f7d4)*/
+    --damage-icon-thunder:   "\f8f2"; /* waveform-lines (signal-stream \f8dd)*/
+    --damage-icon-healing:   "\e681"; /* caduceus */
+    --damage-icon-temphp:    "\f252"; /* hourglass-half */
+}
+
+
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group:is(
+    [data-damage-types="acid"], [data-damage-types="cold"], [data-damage-types="fire"],
+    [data-damage-types="force"], [data-damage-types="lightning"], [data-damage-types="necrotic"],
+    [data-damage-types="poison"], [data-damage-types="psychic"], [data-damage-types="radiant"], 
+    [data-damage-types="thunder"], [data-damage-types="healing"], [data-damage-types="temphp"]) > i,
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group:is(
+    [data-damage-types="acid"], [data-damage-types="cold"], [data-damage-types="fire"],
+    [data-damage-types="force"], [data-damage-types="lightning"], [data-damage-types="necrotic"],
+    [data-damage-types="poison"], [data-damage-types="psychic"], [data-damage-types="radiant"], 
+    [data-damage-types="thunder"], [data-damage-types="healing"], [data-damage-types="temphp"]) .roll-link > i {
+    background: unset;
+    vertical-align: unset;
+}
+
+a.roll-link-group[data-damage-types="acid"] > i.fa-dice-d20::before,
+a.roll-link-group[data-damage-types="acid"] .roll-link > i.fa-dice-d20::before {
+    content: var(--damage-icon-acid);
+}
+
+a.roll-link-group[data-damage-types="cold"] > i.fa-dice-d20::before,
+a.roll-link-group[data-damage-types="cold"] .roll-link > i.fa-dice-d20::before {
+    content: var(--damage-icon-cold);
+}
+
+a.roll-link-group[data-damage-types="fire"] > i.fa-dice-d20::before,
+a.roll-link-group[data-damage-types="fire"] .roll-link > i.fa-dice-d20::before {
+    content: var(--damage-icon-fire);
+}
+
+a.roll-link-group[data-damage-types="force"] > i.fa-dice-d20::before,
+a.roll-link-group[data-damage-types="force"] .roll-link > i.fa-dice-d20::before {
+    content: var(--damage-icon-force);
+}
+
+a.roll-link-group[data-damage-types="lightning"] > i.fa-dice-d20::before,
+a.roll-link-group[data-damage-types="lightning"] .roll-link > i.fa-dice-d20::before {
+    content: var(--damage-icon-lightning);
+}
+
+a.roll-link-group[data-damage-types="necrotic"] > i.fa-dice-d20::before,
+a.roll-link-group[data-damage-types="necrotic"] .roll-link > i.fa-dice-d20::before {
+    content: var(--damage-icon-necrotic);
+}
+a.roll-link-group[data-damage-types="poison"] > i.fa-dice-d20::before,
+a.roll-link-group[data-damage-types="poison"] .roll-link > i.fa-dice-d20::before {
+    content: var(--damage-icon-poison);
+}
+
+a.roll-link-group[data-damage-types="psychic"] > i.fa-dice-d20::before,
+a.roll-link-group[data-damage-types="psychic"] .roll-link > i.fa-dice-d20::before {
+    content: var(--damage-icon-psychic);
+}
+
+a.roll-link-group[data-damage-types="radiant"] > i.fa-dice-d20::before,
+a.roll-link-group[data-damage-types="radiant"] .roll-link > i.fa-dice-d20::before {
+    content: var(--damage-icon-radiant);
+}
+
+a.roll-link-group[data-damage-types="thunder"] > i.fa-dice-d20::before,
+a.roll-link-group[data-damage-types="thunder"] .roll-link > i.fa-dice-d20::before {
+    content: var(--damage-icon-thunder);
+}
+
+a.roll-link-group[data-damage-types="healing"] > i.fa-dice-d20::before,
+a.roll-link-group[data-damage-types="healing"] .roll-link > i.fa-dice-d20::before {
+    content: var(--damage-icon-healing);
+}
+
+a.roll-link-group[data-damage-types="temphp"] > i.fa-dice-d20::before,
+a.roll-link-group[data-damage-types="temphp"] .roll-link > i.fa-dice-d20::before {
+    content: var(--damage-icon-temphp);
+}

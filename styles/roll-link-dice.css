@@ -1,0 +1,50 @@
+a.inline-roll[data-roll-die],
+a.roll-link-group[data-roll-die] {
+    --damage-icon-d4:  "\f6d0"; /* dice-d4 */
+    --damage-icon-d6:  "\f6d1"; /* dice-d6 */
+    --damage-icon-d8:  "\f6d2"; /* dice-d8 */
+    --damage-icon-d10: "\f6cd"; /* dice-d10 */
+    --damage-icon-d12: "\f6ce"; /* dice-d12 */
+}
+
+:is(.dnd5e2, .dnd5e2-journal) a.inline-roll[data-roll-die] > i.fa-dice-d20,
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-roll-die] > i.fa-dice-d20,
+a.roll-link-group[data-roll-die] .roll-link > i.fa-dice-d20 {
+    background: unset;
+    /* vertical-align: unset; */
+}
+
+a.inline-roll[data-roll-die="d4"] > i.fa-dice-d20::before,
+:is(.dnd5e2, .dnd5e2-journal) a.inline-roll[data-roll-die="d4"] > i.fa-dice-d20::before,
+a.roll-link-group[data-roll-die="d4"] > i.fa-dice-d20::before,
+a.roll-link-group[data-roll-die="d4"] .roll-link > i.fa-dice-d20::before {
+    content: var(--damage-icon-d4);
+}
+
+a.inline-roll[data-roll-die="d6"] > i.fa-dice-d20::before,
+:is(.dnd5e2, .dnd5e2-journal) a.inline-roll[data-roll-die="d6"] > i.fa-dice-d20::before,
+a.roll-link-group[data-roll-die="d6"] > i.fa-dice-d20::before,
+a.roll-link-group[data-roll-die="d6"] .roll-link > i.fa-dice-d20::before {
+    content: var(--damage-icon-d6);
+}
+
+a.inline-roll[data-roll-die="d8"] > i.fa-dice-d20::before,
+:is(.dnd5e2, .dnd5e2-journal) a.inline-roll[data-roll-die="d8"] > i.fa-dice-d20::before,
+a.roll-link-group[data-roll-die="d8"] > i.fa-dice-d20::before,
+a.roll-link-group[data-roll-die="d8"] .roll-link > i.fa-dice-d20::before {
+    content: var(--damage-icon-d8);
+}
+
+a.inline-roll[data-roll-die="d10"] > i.fa-dice-d20::before,
+:is(.dnd5e2, .dnd5e2-journal) a.inline-roll[data-roll-die="d10"] > i.fa-dice-d20::before,
+a.roll-link-group[data-roll-die="d10"] > i.fa-dice-d20::before,
+a.roll-link-group[data-roll-die="d10"] .roll-link > i.fa-dice-d20::before {
+    content: var(--damage-icon-d10);
+}
+
+a.inline-roll[data-roll-die="d12"] > i.fa-dice-d20::before,
+:is(.dnd5e2, .dnd5e2-journal) a.inline-roll[data-roll-die="d12"] > i.fa-dice-d20::before,
+a.roll-link-group[data-roll-die="d12"] > i.fa-dice-d20::before,
+a.roll-link-group[data-roll-die="d12"] .roll-link > i.fa-dice-d20::before {
+    content: var(--damage-icon-d12);
+}

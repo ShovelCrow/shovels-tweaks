@@ -1,0 +1,41 @@
+{
+  "id": "shovels-tweaks",
+  "title": "Shovel's Tweaks",
+  "version": "1.1.0",
+  "compatibility": {
+    "minimum": "11",
+    "verified": "12"
+  },
+  "esmodules": [
+    "shovels-tweaks.js"
+  ],
+  "relationships": {
+    "requires": [
+      {
+        "id": "lib-wrapper",
+        "type": "module",
+        "compatibility": {}
+      }
+    ],
+    "systems": [
+      {
+        "id": "dnd5e",
+        "type": "system",
+        "compatibility": {}
+      }
+    ],
+    "recommends": [
+      {
+        "id": "dice-so-nice",
+        "type": "module",
+        "compatibility": {}
+      }
+    ]
+  },
+  "authors": [
+    {
+      "name": "Shovel",
+      "flags": {}
+    }
+  ]
+}

@@ -1,0 +1,199 @@
+a.roll-link-group {
+    --damage-color-acid: hsl(80, 32%, 41%);
+    --damage-color-cold: hsl(195, 53%, 74%);
+    --damage-color-fire: hsl(16, 100%, 45%);
+    --damage-color-force: hsl(300, 100%, 20%);
+    --damage-color-lightning: hsl(210, 100%, 51%);
+    --damage-color-necrotic: hsl(120, 50%, 20%);
+    --damage-color-poison: hsl(271, 76%, 48%);
+    --damage-color-psychic: hsl(328, 80%, 49%);
+    --damage-color-radiant: hsl(51, 100%, 35%);
+    --damage-color-thunder: hsl(210, 13%, 45%);
+    --damage-color-healing: hsl(146, 50%, 47%);
+    --damage-color-temphp: hsl(180, 60%, 40%);
+
+    --damage-color-text-acid: hsl(80, 32%, 36%);
+    --damage-color-text-cold: hsl(195, 53%, 59%);
+    --damage-color-text-fire: hsl(16, 100%, 40%);
+    --damage-color-text-force: hsl(300, 100%, 15%);
+    --damage-color-text-lightning: hsl(210, 100%, 46%);
+    --damage-color-text-necrotic: hsl(120, 50%, 10%);
+    --damage-color-text-poison: hsl(271, 76%, 43%);
+    --damage-color-text-psychic: hsl(328, 80%, 44%);
+    --damage-color-text-radiant: hsl(51, 100%, 35%);
+    --damage-color-text-thunder: hsl(210, 13%, 40%);
+    --damage-color-text-healing: hsl(146, 50%, 42%);
+    --damage-color-text-temphp: hsl(180, 60%, 35%);
+}
+
+.sheet:is(.dnd5e-theme-dark, .theme-dark) a.roll-link-group {
+    --damage-color-text-acid: hsl(80, 32%, 64%);
+    --damage-color-text-cold: hsl(195, 53%, 59%);
+    --damage-color-text-fire: hsl(16, 90%, 60%);
+    --damage-color-text-force: hsl(300, 50%, 50%);
+    --damage-color-text-lightning: hsl(210, 90%, 46%);
+    --damage-color-text-necrotic: hsl(120, 50%, 45%);
+    --damage-color-text-poison: hsl(271, 76%, 57%);
+    --damage-color-text-psychic: hsl(328, 90%, 74%);
+    --damage-color-text-radiant: hsl(51, 90%, 65%);
+    --damage-color-text-thunder: hsl(210, 13%, 60%);
+    --damage-color-text-healing: hsl(146, 50%, 58%);
+    --damage-color-text-temphp: hsl(180, 60%, 65%);
+
+    --damage-color-acid:        var(--damage-color-text-acid    );
+    --damage-color-cold:        var(--damage-color-text-cold    );
+    --damage-color-fire:        var(--damage-color-text-fire    );
+    --damage-color-force:       var(--damage-color-text-force   );
+    --damage-color-lightning:   var(--damage-color-text-lightning);
+    --damage-color-necrotic:    var(--damage-color-text-necrotic);
+    --damage-color-poison:      var(--damage-color-text-poison  );
+    --damage-color-psychic:     var(--damage-color-text-psychic );
+    --damage-color-radiant:     var(--damage-color-text-radiant );
+    --damage-color-thunder:     var(--damage-color-text-thunder );
+    --damage-color-healing:     var(--damage-color-text-healing );
+    --damage-color-temphp:      var(--damage-color-text-temphp );
+}
+
+a.roll-link-group[data-damage-types="acid"],
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="acid"],
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="acid"] .roll-link {
+    color: var(--damage-color-text-acid);
+}
+a.roll-link-group[data-damage-types="acid"] > i,
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="acid"] > i,
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="acid"] .roll-link > i {
+    color: var(--damage-color-acid);
+}
+
+a.roll-link-group[data-damage-types="cold"],
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="cold"],
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="cold"] .roll-link {
+    color: var(--damage-color-text-cold);
+}
+a.roll-link-group[data-damage-types="cold"] > i,
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="cold"] > i,
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="cold"] .roll-link > i {
+    color: var(--damage-color-cold);
+}
+
+a.roll-link-group[data-damage-types="fire"],
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="fire"],
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="fire"] .roll-link {
+    color: var(--damage-color-text-fire);
+}
+a.roll-link-group[data-damage-types="fire"] > i,
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="fire"] > i,
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="fire"] .roll-link > i {
+    color: var(--damage-color-fire);
+}
+
+
+a.roll-link-group[data-damage-types="force"],
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="force"],
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="force"] .roll-link {
+    color: var(--damage-color-text-force);
+}
+a.roll-link-group[data-damage-types="force"] > i,
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="force"] > i,
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="force"] .roll-link > i {
+    color: var(--damage-color-force);
+}
+
+
+a.roll-link-group[data-damage-types="lightning"],
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="lightning"],
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="lightning"] .roll-link {
+    color: var(--damage-color-text-lightning);
+}
+a.roll-link-group[data-damage-types="lightning"] > i,
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="lightning"] > i,
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="lightning"] .roll-link > i {
+    color: var(--damage-color-lightning);
+}
+
+
+a.roll-link-group[data-damage-types="necrotic"],
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="necrotic"],
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="necrotic"] .roll-link {
+    color: var(--damage-color-text-necrotic);
+}
+a.roll-link-group[data-damage-types="necrotic"] > i,
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="necrotic"] > i,
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="necrotic"] .roll-link > i {
+    color: var(--damage-color-necrotic);
+}
+
+
+a.roll-link-group[data-damage-types="poison"],
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="poison"],
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="poison"] .roll-link {
+    color: var(--damage-color-text-poison);
+}
+a.roll-link-group[data-damage-types="poison"] > i,
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="poison"] > i,
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="poison"] .roll-link > i {
+    color: var(--damage-color-poison);
+}
+
+
+a.roll-link-group[data-damage-types="psychic"],
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="psychic"],
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="psychic"] .roll-link {
+    color: var(--damage-color-psychic);
+}
+a.roll-link-group[data-damage-types="psychic"] > i,
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="psychic"] > i,
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="psychic"] .roll-link > i {
+    color: var(--damage-color-psychic);
+}
+
+
+a.roll-link-group[data-damage-types="radiant"],
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="radiant"],
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="radiant"] .roll-link {
+    color: var(--damage-color-text-radiant);
+}
+a.roll-link-group[data-damage-types="radiant"] > i,
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="radiant"] > i,
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="radiant"] .roll-link > i {
+    color: var(--damage-color-radiant);
+}
+
+
+a.roll-link-group[data-damage-types="thunder"],
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="thunder"],
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="thunder"] .roll-link {
+    color: var(--damage-color-text-thunder);
+}
+a.roll-link-group[data-damage-types="thunder"] > i,
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="thunder"] > i,
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="thunder"] .roll-link > i {
+    color: var(--damage-color-thunder);
+}
+
+
+a.roll-link-group[data-damage-types="healing"],
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="healing"],
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="healing"] .roll-link {
+    color: var(--damage-color-text-healing);
+}
+a.roll-link-group[data-damage-types="healing"] > i,
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="healing"] > i,
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="healing"] .roll-link > i {
+    color: var(--damage-color-healing);
+}
+
+a.roll-link-group[data-damage-types="temphp"],
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="temphp"],
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="temphp"] .roll-link {
+    color: var(--damage-color-text-temphp);
+}
+a.roll-link-group[data-damage-types="temphp"] > i,
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="temphp"] > i,
+:is(.dnd5e2, .dnd5e2-journal) a.roll-link-group[data-damage-types="temphp"] .roll-link > i {
+    color: var(--damage-color-temphp);
+}
+
+:is(.dnd5e, .dnd5e2, .dnd5e2-journal) table thead a:is(.content-link, .inline-roll) > i {
+    color: var(--color-text-light-0);
+}
