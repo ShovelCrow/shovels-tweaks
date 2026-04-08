@@ -21,4 +21,7 @@ Hooks.on("ready", () => {
 
     // Register late wrappers
     registerLibWrapper();
+
+    // Setup API
+    setupAPI();
 });

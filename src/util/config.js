@@ -33,6 +33,10 @@ export const CSS = {
     },
 }
 
+export const API = {
+    updateItemFromCompendium
+}
+
 // Register Settings
 export function registerSettings() {
     // Dice Themes - Toggle
@@ -220,6 +224,12 @@ export function registerLibWrapper() {
     // Default Tweak
     _overrideEnrichRollTooltip();
     _overrideScaleAdvancementConfigPrepareContext();
+}
+
+export function setupAPI() {
+    const data = game.modules?.get(MODULE_ID);
+    data.api = API;
+    globalThis.shovelsTweaks = game.modules?.get(MODULE_ID)?.api;
 }
 
 // ============================================================================
