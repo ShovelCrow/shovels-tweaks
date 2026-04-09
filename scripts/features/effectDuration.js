@@ -1,4 +1,4 @@
-import { MODULE_ID } from "../util/config";
+import { MODULE_ID } from "../util/config.js";
 
 function replaceEffectDurationLabel(wrapped, ...args) {
     const duration = wrapped(args);

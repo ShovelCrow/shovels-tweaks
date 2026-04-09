@@ -1,4 +1,4 @@
-import { MODULE_ID } from "../util/config";
+import { MODULE_ID } from "../util/config.js";
 
 const SHEET_SIZES = {
     CHAR: {

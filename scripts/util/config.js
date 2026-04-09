@@ -1,6 +1,6 @@
 import { toggleSheetSize } from "../features/compactSheet.js"
-import { overrideRollEnrichers } from "../features/damageEnrichers";
-import { addDamageTypeTagsV2 } from "../features/diceThemes";
+import { overrideRollEnrichers } from "../features/damageEnrichers.js";
+import { addDamageTypeTagsV2 } from "../features/diceThemes.js";
 import { overrideEffectLabel } from "../features/effectDuration.js";
 import { updateItemFromCompendium } from "../features/updateFromCompedium.js";
 

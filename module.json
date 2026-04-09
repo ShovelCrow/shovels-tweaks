@@ -7,7 +7,7 @@
     "verified": "12"
   },
   "esmodules": [
-    "shovels-tweaks.js"
+    "scripts/shovels-tweaks.js"
   ],
   "relationships": {
     "requires": [

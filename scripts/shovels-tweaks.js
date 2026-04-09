@@ -1,4 +1,4 @@
-import { registerHooks, registerSettings, registerLibWrapper, registerEnrichers, applyCss } from "./util/config.js";
+import { registerHooks, registerSettings, registerLibWrapper, registerEnrichers, applyCss, setupAPI } from "./util/config.js";
 
 Hooks.once("init", () => {
     console.log("Shovel's Tweaks | Init");
