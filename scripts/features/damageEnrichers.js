@@ -17,6 +17,7 @@ function addDamageEnricherTooltip() {
 
     damageEnricher.enricher = async function (match, options) {
         const formatted = await prevEnricher(match, options);
+        if (!formatted) return formatted;
         let { type, config, label } = match.groups;
         if (['damage', 'heal', 'healing'].includes(type)) {
             formatted.dataset.tooltip = formatted.dataset.formulas ?? undefined;
@@ -34,6 +35,7 @@ function damageEnricherDieSize() {
 
     damageEnricher.enricher = async function (match, options) {
         const formatted = await prevEnricher(match, options);
+        if (!formatted) return formatted;
         let { type, config, label } = match.groups;
         if (['damage', 'heal', 'healing'].includes(type)) {
             const formula = formatted.dataset.formulas;

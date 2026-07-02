@@ -16,7 +16,7 @@ export async function updateItemFromCompendium(item) {
 }
 
 // Get an update object from compedium source.
-export function getItemUpdate(item, updated) {
+function getItemUpdate(item, updated) {
     const currentSource = item.toObject();
     const latestSource = updated.toObject();
     let update = {
