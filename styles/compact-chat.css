@@ -11,7 +11,7 @@
 .dnd5e2.chat-card .card-buttons {
     gap: 0.25rem;
 }
-.dnd5e2 button {
+.dnd5e2 button:not(.radio-button, .unbutton) {
     font-size: var(--font-size-12);
     padding: 0rem;
 }
