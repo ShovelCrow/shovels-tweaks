@@ -2,26 +2,40 @@
     padding: 0.375rem;
 }
 
-.dnd5e2.chat-card {
+.dnd5e2 .chat-card {
     gap: 0.25rem;
 }
-.dnd5e2.chat-card .description {
+:is(.dnd5e2.chat-card, .dnd5e2 .chat-card) .description {
     padding: 0.375rem;
 }
-.dnd5e2.chat-card .card-buttons {
+:is(.dnd5e2.chat-card, .dnd5e2 .chat-card) .description .details table thead th {
+    font-size: var(--font-size-11);
+}
+:is(.dnd5e2.chat-card, .dnd5e2 .chat-card) .description .details > .wrapper > hr {
+    width: 100%;
+}
+
+:is(.dnd5e2.chat-card, .dnd5e2 .chat-card) .card-buttons {
     gap: 0.25rem;
 }
-.dnd5e2 button:not(.radio-button, .unbutton) {
+.dnd5e2:not(.activity-choice) button:not(.radio-button, .unbutton) {
     font-size: var(--font-size-12);
     padding: 0rem;
 }
 
-.rsr-header {
+:is(.dnd5e2.chat-card, .dnd5e2 .chat-card) .rsr-header {
     margin-bottom: 0.125rem;
 }
-.rsr-title {
+:is(.dnd5e2.chat-card, .dnd5e2 .chat-card) .rsr-title {
     font-size: var(--font-size-12);
 
+}
+
+:is(.dnd5e2.chat-card, .dnd5e2 .chat-card) .rsr-damage-buttons-xl button {
+    font-size: var(--font-size-13);
+    min-width: 36px;
+    height: 24px;
+    padding: 0 3px;
 }
 
 .dice-result .dice-total {
@@ -60,21 +74,9 @@
     min-width: 30px;
 }
 
-.rsr-damage-buttons-xl button {
-    font-size: var(--font-size-13);
-    width: 36px;
-}
-
 .prosemirror menu .pm-dropdown > span {
     width: 4em;
 }
 .prosemirror menu {
     gap: 1px;
-}
-
-.dnd5e2.chat-card .description .details table thead th {
-    font-size: var(--font-size-11);
-}
-.dnd5e2.chat-card .description .details > .wrapper > hr {
-    width: 100%;
 }

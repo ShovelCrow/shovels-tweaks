@@ -1,7 +1,9 @@
-.dnd5e2.chat-card.activation-card .flavor-hide {
+.dnd5e2.chat-card.activation-card .flavor-hide,
+.dnd5e2 .chat-card.activation-card .flavor-hide {
     display: none;
 }
 
-.dnd5e2.chat-card.activation-card .flavor-hide + p {
+.dnd5e2.chat-card.activation-card .flavor-hide + p,
+.dnd5e2 .chat-card.activation-card .flavor-hide + p {
     padding-top: 0.5rem
 }
