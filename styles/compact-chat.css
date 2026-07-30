@@ -33,7 +33,7 @@
 
 :is(.dnd5e2.chat-card, .dnd5e2 .chat-card) .rsr-damage-buttons-xl button {
     font-size: var(--font-size-13);
-    min-width: 36px;
+    width: 36px;
     height: 24px;
     padding: 0 3px;
 }
