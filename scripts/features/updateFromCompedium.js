@@ -16,7 +16,7 @@ export async function updateItemFromCompendium(item) {
 }
 
 // Get an update object from compedium source.
-export function getItemUpdate(item, updated) {
+function getItemUpdate(item, updated) {
     const currentSource = item.toObject();
     const latestSource = updated.toObject();
     let update = {
@@ -51,7 +51,21 @@ export function getItemUpdate(item, updated) {
             "system.equipped": currentSource.system.equipped,
             "system.uses": currentSource.system.uses
         });
+        // Preserve activity consumption data for innate spells
+        let updatedActivities = update.system.activities;
+        const currentActivities = currentSource.system.activities;
+        Object.entries(update.system.activities).forEach(([id, act]) => {
+            const currentAct = currentActivities[id];
+            if (!currentAct) return;
+            foundry.utils.mergeObject(updatedActivities[id], {
+                "consumption.targets": currentAct.consumption.targets
+            });
+        });
+        foundry.utils.mergeObject(update, {
+            "system.activities": updatedActivities
+        });
     }
+
 
     return update;
 }
