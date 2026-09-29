@@ -1,0 +1,7 @@
+<ul class="unlist pills shovel-pills">
+    {{#each modifiers}}
+    <li class="pill shovel-pill">
+        {{#if this.label}}{{this.label}} {{/if}}{{this.value}}{{#if this.suffix}} {{this.suffix}}{{/if}}
+        </li>
+    {{/each}}
+</ul>

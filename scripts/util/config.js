@@ -3,6 +3,8 @@ import { overrideRollEnrichers } from "../features/damageEnrichers.js";
 import { addDamageTypeTagsV2 } from "../features/diceThemes.js";
 import { overrideEffectLabel } from "../features/effectDuration.js";
 import { updateItemFromCompendium } from "../features/updateFromCompedium.js";
+import { overrideActivityChoice } from "../features/activityChoice.js";
+import { processChatMessage } from "../features/rollBreakdown.js";
 
 export const MODULE_ID = "shovels-tweaks";
 
@@ -89,6 +91,37 @@ export function registerSettings() {
         onChange: value => overrideEffectLabel(value)
     });
 
+    // Roll Breakdown - Toggle
+    game.settings.register(MODULE_ID, "toggleRollBreakdown", {
+        name: "D20 Roll Breakdown",
+        hint: "Display bonuses below attack rolls, ability checks, and saving throws.\n\"Special bonuses only\": excludes ability and proficiency modifiers",
+        scope: "client",
+        config: true,
+        type: Number,
+        choices: {
+            0: "Disabled",
+            1: "Special bonuses only",
+            2: "All modifiers"
+        },
+        default: 0,
+        requiresReload: true
+    });
+    // Roll Breakdown - Toggle
+    game.settings.register(MODULE_ID, "toggleDamageBreakdown", {
+        name: "Damage Roll Breakdown",
+        hint: "Display bonuses below damage rolls.\n\"Special bonuses only\": excludes base damage and ability modifiers",
+        scope: "client",
+        config: true,
+        type: Number,
+        choices: {
+            0: "Disabled",
+            1: "Special bonuses only",
+            2: "All modifiers"
+        },
+        default: 0,
+        requiresReload: true
+    });
+
     // Dice Icons - Toggle
     game.settings.register(MODULE_ID, "toggleInlineRollIcons", {
         name: "Inline Roll Icons",
@@ -135,6 +168,19 @@ export function registerSettings() {
         requiresReload: true
     });
 
+    // Activity Choice - Toggle
+    game.settings.register(MODULE_ID, "activityChoice", {
+        name: "Activity Choice Dialog",
+        hint: "Enable an alternate activity choice dialog that displays activation costs.",
+        scope: "client",
+        config: true,
+        type: Boolean,
+        default: false,
+        onChange: (value) => {
+            overrideActivityChoice(value);
+        }
+    });
+
     // Update From Compendia - Compedia List
     game.settings.register(MODULE_ID, "updateCompendia", {
         name: "Registered Compendia",
@@ -169,6 +215,18 @@ export function registerHooks() {
     });
     Hooks.once("tidy5e-sheet.ready", (api) => {
         if (!game.user.isGM) return;
+        if (game.modules.get("item-piles")?.active) {
+            api.registerItemHeaderControls?.({
+                controls: [{
+                    label: "Item Piles",
+                    icon: "fas fa-box-open",
+                    async onClickAction() {
+                        let obj = this?.object ?? this?.item;
+                        game.itempiles.apps.ItemEditor.show(obj);
+                    }
+                }]
+            });
+        }
         api.registerItemHeaderControls?.({
             controls: [{
                 label: "Update From Compedium",
@@ -179,6 +237,13 @@ export function registerHooks() {
             }]
         });
     });
+    const breakdownMode = game.settings.get(MODULE_ID, "toggleRollBreakdown")
+        || game.settings.get(MODULE_ID, "toggleDamageBreakdown");
+    if (breakdownMode) {
+        Hooks.on("dnd5e.renderChatMessage", (message, html) => {
+            processChatMessage(message, html);
+        });
+    }
 }
 
 // Register LibWrapper Overrides before onReady
@@ -189,6 +254,10 @@ export function registerEnrichers() {
     // Standard CONFIG mods
     if (game.settings.get(MODULE_ID, "healingHitPoints")) {
         CONFIG.DND5E.healingTypes.healing.label = "Hit Points";
+    }
+
+    if (game.settings.get(MODULE_ID, "activityChoice")) {
+        overrideActivityChoice();
     }
 }
 
@@ -203,7 +272,7 @@ export function applyCss() {
     if (game.settings.get(MODULE_ID, "toggleInlineRollIcons")) {
         _toggleCss(CSS.ROLL_LINK_DICE);
     }
-    
+
     // Damage Enrichers - Theme Logic
     const rollLinkTheme = game.settings.get(MODULE_ID, "toggleRollLinkThemes");
     if (rollLinkTheme) {
@@ -212,7 +281,7 @@ export function applyCss() {
     }
 
     // Default Tweak - Hide flavor text
-     _toggleCss(CSS.FLAVOR_HIDE);
+    _toggleCss(CSS.FLAVOR_HIDE);
 }
 
 // Register LibWrapper Overrides during onReady
