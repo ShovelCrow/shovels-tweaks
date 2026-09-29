@@ -1,0 +1,52 @@
+<section>
+    <menu class="unlist">
+        {{#each activities}}
+        <li>
+            <button type="button" data-action="choose" data-activity-id="{{ id }}">
+                <span class="icon">
+                    {{#with icon}}
+                    {{#if svg}}
+                    <dnd5e-icon src="{{ src }}"></dnd5e-icon>
+                    {{else}}
+                    <img src="{{ src }}" alt="{{ ../name }}" class="gold-icon">
+                    {{/if}}
+                    {{/with}}
+                </span>
+                <span class="name name-stacked">
+                    <span class="title">{{ name }}</span>
+                    {{#if (or labels.activation uses.max consume)}}
+                    <span class="subtitle">
+                        {{ labels.activation }}
+                        {{#if uses.max}}
+                        <span class="separator">&bull;</span>
+                        <span class="uses">
+                            {{#if uses.value}}{{ uses.value }}&sol;{{/if}}{{ uses.max }}
+                        </span>
+                        {{/if}}
+                        {{#if consume}}
+                        {{#with consume}}
+                        <span class="separator">&bull;</span>
+                        <span class="consume">
+                            {{#if label}}
+                            {{ label }}
+                            {{/if}}
+                            {{#if (or value max)}}
+                            <span class="target">
+                                {{#if value}}{{ value }}{{/if}}{{#if max}}&sol;{{ max }}{{/if}}
+                            </span>
+                            {{/if}}
+                        </span>
+                        {{/with}}
+                        {{/if}}
+                    </span>
+                    {{/if}}
+                </span>
+            </button>
+        </li>
+        {{/each}}
+    </menu>
+
+    {{#if controlHint}}
+    <div class="control-hint ff-hint">{{{ controlHint }}}</div>
+    {{/if}}
+</section>

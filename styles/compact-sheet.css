@@ -29,6 +29,8 @@
   --dnd5e-sheet-header-height: 150px;
   --dnd5e-sheet-header-right-width: 270px;
   --dnd5e-sheet-sidebar-width: 200px;
+}
+.dnd5e2.sheet.actor.character:not(.minimized, .minimizing, .maximizing) {
   min-width: 750px;
   min-height: 700px;
 }
@@ -313,6 +315,7 @@
   height: 28px;
   min-width: 28px;
   min-height: 28px;
+  max-width: 28px;
 }
 .dnd5e2 .items-section .items-header .item-controls,
 .dnd5e2 .items-section .item .item-controls {
@@ -352,13 +355,13 @@
 .dnd5e2.sheet.actor .items-section .item .item-target {
   width: 70px;
 }
-.dnd5e2.sheet.actor .items-section .items-header .item-formula,
+/* .dnd5e2.sheet.actor .items-section .items-header .item-formula,
 .dnd5e2.sheet.actor .items-section .item .item-formula,
 .dnd5e2.sheet.actor .items-section .items-header .spell-formula,
 .dnd5e2.sheet.actor .items-section .item .spell-formula {
-  /* font-size: var(--font-size-11); */
-  /* width: 70px; */
-}
+  font-size: var(--font-size-11);
+  width: 70px;
+} */
 .dnd5e2 .items-section .items-header .item-formula dnd5e-icon,
 .dnd5e2 .items-section .item .item-formula dnd5e-icon,
 .dnd5e2 .items-section .items-header .spell-formula dnd5e-icon,
