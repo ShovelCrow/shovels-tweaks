@@ -4,6 +4,28 @@ const D20_TYPES = ["attack", "ability", "save", "skill", "tool", "death", "initi
 const STORED_ROLLTYPES = ["attack", "damage", "heal", "healing"];
 const BASE_MODTYPES = ["ability", "prof", "base"];
 
+const MSG_TYPE = {
+    ROLL: "roll",
+    USAGE: "usage"
+}
+const ROLL_TYPE = {
+    SKILL: "skill",
+    ABIL: "ability",
+    SAVE: "save",
+    DEATH: "death",
+    TOOL: "tool",
+    ACT: "activity",
+    CHECK: "check",
+    ATTACK: "attack",
+    DAMAGE: "damage",
+    VERSATILE: "versatile",
+    OTHER: "formula",
+    CONCENTRATE: "concentration",
+    HEAL: "healing",
+    FORMULA: "roll",
+    INIT: "initiative"
+}
+
 export async function processChatMessage(message, html) {
     if (!message || !html) {
         return;
@@ -59,24 +81,24 @@ async function injectStored(message, rolls, type, html) {
 
 async function injectBreakdown(message, type, html) {
     switch (type) {
-        case "attack":
+        case ROLL_TYPE.ATTACK:
             await injectAttackRoll(message, html);
             break;
-        case "damage":
-        case "healing":
+        case ROLL_TYPE.DAMAGE:
+        case ROLL_TYPE.HEAL:
             await injectDamageRolls(message, html);
             break;
-        case "ability":
-        case "save":
-        case "skill":
-        case "tool":
-        case "death":
+        case ROLL_TYPE.ABIL:
+        case ROLL_TYPE.SAVE:
+        case ROLL_TYPE.SKILL:
+        case ROLL_TYPE.TOOL:
+        case ROLL_TYPE.DEATH:
             await injectD20Roll(message, html, findCheckMods);
             break;
-        case "initiative":
+        case ROLL_TYPE.INIT:
             await injectD20Roll(message, html, findInitMods);
             break;
-        case "activity":
+        case ROLL_TYPE.ACT:
             if (message.flags?.["rsr5e"].renderAttack || message.flags?.["rsr5e"].renderAttack === false) {
                 await injectAttackRoll(message, html);
             }
@@ -146,20 +168,21 @@ async function renderBreakdown(html, modifiers, damageMode = false, selector = "
         return mode >= 2 || !regex
     });
 
+    const renderTemp = foundry.applications.handlebars.renderTemplate;
     const template = `modules/${MODULE_ID}/templates/breakdown-pills.hbs`;
-    const modHTML = $(await renderTemplate(template, { modifiers: visible }));
+    const modHTML = $(await renderTemp(template, { modifiers: visible }));
     $(html).find(selector).append(modHTML);
 
     return modHTML;
 }
 
 function _getMessageType(message) {
-    return message.flags.dnd5e?.messageType === "usage"
+    return (message.type === MSG_TYPE.USAGE || message.flags.dnd5e?.messageType === MSG_TYPE.USAGE)
         ? "activity"
-        : message.flags.dnd5e?.messageType === "roll"
+        : message.flags.dnd5e?.messageType === MSG_TYPE.ROLL
             ? (message.flags.dnd5e?.roll?.type ?? null)
             : message.flags.core?.initiativeRoll
-                ? "initiative"
+                ? ROLL_TYPE.INIT
                 : null;
 }
 
@@ -209,7 +232,7 @@ function findDamageMods(rolls, msg, actor, item, activity) {
         first, actor, {
         activity: activity, item: item,
         flags: flags, options: options,
-        terms: terms, skip: true
+        terms: terms
     }, _findDamageCandidates
     );
 }
@@ -223,18 +246,20 @@ function _findMods(roll, actor, data, candidatesHandler) {
 
     const isD20 = roll?.validD20Roll;
     const rollTerms = data.terms ?? (isD20 ? roll?.terms.slice(1) : roll?.terms) ?? [];
+    const damageTypes = Object.keys(CONFIG.DND5E.damageTypes).concat(Object.keys(CONFIG.DND5E.healingTypes));
     rollTerms.forEach((term, i) => {
         if (!term) return;
         const termType = term.constructor.name;
 
         if (termType === "OperatorTerm") return;
 
-        if (termType === "NumericTerm" || termType === "Die") {
+        if (termType === "NumericTerm" || termType === "BasicDie" || termType === "Die") {
             const termSource = _getTermSource(term);
+            const isDamageType = termSource && damageTypes.includes(termSource);
             const prevOperator = rollTerms?.[i - 1] ?? "+";
             const operator = prevOperator?.operator === "-" ? -1 : 1;
             const sign = term.total * operator >= 0 ? 1 : -1;
-            if (termSource && !data.skip) {
+            if (termSource && !isDamageType && !data.skip) {
                 labeledMods.push({
                     label: termSource.titleCase(),
                     term: term,
