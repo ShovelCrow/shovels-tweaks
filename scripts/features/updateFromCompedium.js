@@ -51,7 +51,21 @@ function getItemUpdate(item, updated) {
             "system.equipped": currentSource.system.equipped,
             "system.uses": currentSource.system.uses
         });
+        // Preserve activity consumption data for innate spells
+        let updatedActivities = update.system.activities;
+        const currentActivities = currentSource.system.activities;
+        Object.entries(update.system.activities).forEach(([id, act]) => {
+            const currentAct = currentActivities[id];
+            if (!currentAct) return;
+            foundry.utils.mergeObject(updatedActivities[id], {
+                "consumption.targets": currentAct.consumption.targets
+            });
+        });
+        foundry.utils.mergeObject(update, {
+            "system.activities": updatedActivities
+        });
     }
+
 
     return update;
 }
